@@ -1,4 +1,4 @@
-package javastudy0509;
+package innerclass;
 
 class OutClass {					//외부클래스
 

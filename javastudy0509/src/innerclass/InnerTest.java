@@ -28,7 +28,7 @@ class OutClass {					//외부클래스
 	public void usingClass(){
 		inClass.inTest(); 
 	}
-}
+} 
 
 public class InnerTest{
 	

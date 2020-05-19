@@ -187,6 +187,7 @@ public class GoodMain {
 		}		
 		//사용이 끝나면 키보드 연결 해제
 		sc.close();
+		
 	}
 
 }

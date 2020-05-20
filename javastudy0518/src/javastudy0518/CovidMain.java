@@ -101,12 +101,11 @@ public class CovidMain {
 							"해당하는 번호의 데이터가 없습니다.");
 					}else {
 						System.out.println(covid);
-						System.out.printf("%5d\t%15s\n",
-								covid.getNum(), covid.getNation());
+						//System.out.printf("%5d\t%15s\n",covid.getNum(), covid.getNation());
 					}
 				}catch(Exception e) {
 					System.out.println("정수를 입력하세요!!");
-					break;
+					
 				}
 				
 				break;

@@ -1,0 +1,110 @@
+-- 도서
+CREATE TABLE `sample`.`BOOK` (
+	`BOOKCODE`      INT          NOT NULL COMMENT '도서번호', -- 도서번호
+	`PUBLISHERCODE` INT          NOT NULL COMMENT '출판사번호', -- 출판사번호
+	`BOOKNAME`      VARCHAR(100) NOT NULL COMMENT '도서이름', -- 도서이름
+	`BOOKPRICE`     INT          NOT NULL DEFAULT 0 COMMENT '도서단가' -- 도서단가
+)
+COMMENT '도서';
+
+-- 도서
+ALTER TABLE `sample`.`BOOK`
+	ADD CONSTRAINT `PK_BOOK` -- 도서 기본키
+		PRIMARY KEY (
+			`BOOKCODE`,      -- 도서번호
+			`PUBLISHERCODE`  -- 출판사번호
+		);
+
+ALTER TABLE `sample`.`BOOK`
+	MODIFY COLUMN `BOOKCODE` INT NOT NULL AUTO_INCREMENT COMMENT '도서번호';
+
+-- 고객
+CREATE TABLE `sample`.`CUSTOMER` (
+	`CUSTOMERCODE`    INT         NOT NULL COMMENT '고객번호', -- 고객번호
+	`CUSTOMERADDRESS` TEXT        NULL     COMMENT '고객주소', -- 고객주소
+	`CUSTOMERNAME`    VARCHAR(30) NOT NULL COMMENT '고객이름', -- 고객이름
+	`CUSTOMERNUMBER`  VARCHAR(15) NOT NULL COMMENT '고객전화번호' -- 고객전화번호
+)
+COMMENT '고객';
+
+-- 고객
+ALTER TABLE `sample`.`CUSTOMER`
+	ADD CONSTRAINT `PK_CUSTOMER` -- 고객 기본키
+		PRIMARY KEY (
+			`CUSTOMERCODE` -- 고객번호
+		);
+
+ALTER TABLE `sample`.`CUSTOMER`
+	MODIFY COLUMN `CUSTOMERCODE` INT NOT NULL AUTO_INCREMENT COMMENT '고객번호';
+
+-- 출판사
+CREATE TABLE `sample`.`PUBLISHER` (
+	`PUBLISHERCODE`    INT          NOT NULL COMMENT '출판사번호', -- 출판사번호
+	`PUBLISHERNAME`    VARCHAR(100) NOT NULL COMMENT '출판사이름', -- 출판사이름
+	`PUBLISHERNUMBER`  VARCHAR(15)  NOT NULL COMMENT '출판사전화번호', -- 출판사전화번호
+	`PUBLISHERMANAGER` CHAR(100)    NOT NULL COMMENT '담당자이름' -- 담당자이름
+)
+COMMENT '출판사';
+
+-- 출판사
+ALTER TABLE `sample`.`PUBLISHER`
+	ADD CONSTRAINT `PK_PUBLISHER` -- 출판사 기본키
+		PRIMARY KEY (
+			`PUBLISHERCODE` -- 출판사번호
+		);
+
+ALTER TABLE `sample`.`PUBLISHER`
+	MODIFY COLUMN `PUBLISHERCODE` INT NOT NULL AUTO_INCREMENT COMMENT '출판사번호';
+
+-- 주문
+CREATE TABLE `sample`.`ORDER` (
+	`ORDERCODE`     INT  NOT NULL COMMENT '주문번호', -- 주문번호
+	`ORDERDATE`     DATE NOT NULL COMMENT '주문일자', -- 주문일자
+	`ORDERPRICE`    INT  NOT NULL COMMENT '주문금액', -- 주문금액
+	`BOOKCODE`      INT  NULL     COMMENT '도서번호', -- 도서번호
+	`PUBLISHERCODE` INT  NULL     COMMENT '출판사번호', -- 출판사번호
+	`CUSTOMERCODE`  INT  NULL     COMMENT '고객번호' -- 고객번호
+)
+COMMENT '주문';
+
+-- 주문
+ALTER TABLE `sample`.`ORDER`
+	ADD CONSTRAINT `PK_ORDER` -- 주문 기본키
+		PRIMARY KEY (
+			`ORDERCODE` -- 주문번호
+		);
+
+ALTER TABLE `sample`.`ORDER`
+	MODIFY COLUMN `ORDERCODE` INT NOT NULL AUTO_INCREMENT COMMENT '주문번호';
+
+-- 도서
+ALTER TABLE `sample`.`BOOK`
+	ADD CONSTRAINT `FK_PUBLISHER_TO_BOOK` -- 출판사 -> 도서
+		FOREIGN KEY (
+			`PUBLISHERCODE` -- 출판사번호
+		)
+		REFERENCES `sample`.`PUBLISHER` ( -- 출판사
+			`PUBLISHERCODE` -- 출판사번호
+		);
+
+-- 주문
+ALTER TABLE `sample`.`ORDER`
+	ADD CONSTRAINT `FK_BOOK_TO_ORDER` -- 도서 -> 주문
+		FOREIGN KEY (
+			`BOOKCODE`,      -- 도서번호
+			`PUBLISHERCODE`  -- 출판사번호
+		)
+		REFERENCES `sample`.`BOOK` ( -- 도서
+			`BOOKCODE`,      -- 도서번호
+			`PUBLISHERCODE`  -- 출판사번호
+		);
+
+-- 주문
+ALTER TABLE `sample`.`ORDER`
+	ADD CONSTRAINT `FK_CUSTOMER_TO_ORDER` -- 고객 -> 주문
+		FOREIGN KEY (
+			`CUSTOMERCODE` -- 고객번호
+		)
+		REFERENCES `sample`.`CUSTOMER` ( -- 고객
+			`CUSTOMERCODE` -- 고객번호
+		);

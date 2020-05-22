@@ -1,0 +1,42 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>javastudy0522</groupId>
+  <artifactId>javastudy0522</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <build>
+    <sourceDirectory>src</sourceDirectory>
+    <plugins>
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.8.0</version>
+        <configuration>
+          <source>1.8</source>
+          <target>1.8</target>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+  
+  <!--  중앙 저장소 이외의 다운로드 받을 위치를 설정 -->
+  <!--  수업시간에는 오라클을 사용할때만 사용 -->
+  <repositories>
+  
+  </repositories>
+  
+  <!--  실제 사용할 라이브러리의 의존성을 설정 -->
+  <dependencies>
+  	<!--  MySQL 사용을 위한 의존성 -->
+  	<dependency>
+    	<groupId>mysql</groupId>
+    	<artifactId>mysql-connector-java</artifactId>
+    	<version>8.0.15</version>
+	</dependency>
+	
+	<!-- https://mvnrepository.com/artifact/net.sf.supercsv/super-csv -->
+	<dependency>
+    	<groupId>net.sf.supercsv</groupId>
+    	<artifactId>super-csv</artifactId>
+    	<version>2.4.0</version>
+	</dependency>
+  </dependencies>
+</project>

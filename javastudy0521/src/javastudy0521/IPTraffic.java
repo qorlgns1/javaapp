@@ -48,6 +48,7 @@ public class IPTraffic {
 						//데이터가 있는 경우는 가져오기
 						int sum = (Integer)map.get("ip");
 						//기존값에 새로운 값을 추가
+						//sum 이란 기존에 있던 값을 의미한다.
 						sum = sum + traffic;
 						//데이터를 수정
 						//ip가 기존에 있는 값이면 덮어씌운다.

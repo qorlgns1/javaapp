@@ -67,7 +67,7 @@ public class KakaoBookOpenAPIUse {
 			e.printStackTrace();
 		}
 		
-		//System.out.println(jsonString);
+		System.out.println(jsonString);
 		
 		//읽어온 데이터에서 조회된 데이터 건수 찾아오기
 		//조회된 데이터 개수를 저장할 변수
@@ -163,7 +163,7 @@ public class KakaoBookOpenAPIUse {
 					for(int j=0; j<documents.length(); j=j+1 ) {
 						//배열을 순회하면서 데이터 가져오기
 						JSONObject document = 
-							documents.getJSONObject(i);
+							documents.getJSONObject(j);
 						//객체에서 데이터 읽어오기
 						String title = 
 							document.getString("title");

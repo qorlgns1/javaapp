@@ -100,7 +100,7 @@ public class MovieParsing {
 				//System.out.println(movies);
 				
 				JSONArray movie = movies.getJSONArray("movie");
-				//System.out.println(movie);
+			//	System.out.println(movie);
 				
 				for (int i = 0; i < movie.length(); i++) {
 					JSONObject imsi = movie.getJSONObject(i);
@@ -118,8 +118,8 @@ public class MovieParsing {
 					//list에 추가
 					list.add(map);
 				}
-				for(Map<String, Object> li : list) {
-					System.out.println(li);
+				for(Map<String, Object> map : list) {
+					System.out.println(map);
 				}
 				
 			}else {

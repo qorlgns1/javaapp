@@ -167,7 +167,7 @@ public class WeatherXMLParsing {
 						// 데이터베이스 연결
 						Connection con = DriverManager.getConnection(
 								"jdbc:mysql://localhost:3306/sample?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC&useSSL = false",
-								"root", "Gnfnfn21!!");
+								"root", "12345678!");
 						// System.out.println(con);
 
 						// SQL 실행

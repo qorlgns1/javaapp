@@ -49,14 +49,17 @@ public class HaniMain {
 				Document document = Jsoup.parse(html);
 				
 				//선택자 이용해서 가져오기
+				//실렉트 안에 내용이 기억이 안나면 F12누르고 검색해보기.
 				Elements elements = document.select("#main-top > div.main-top > div.main-top-article > h4 > a");
 				//선택자를 이용한 것은 반복문을 수행
 				for(int i = 0; i<elements.size(); i= i+1) {
 					Element element = elements.get(i);
 					//태그 안의 내용을 가져오기
-					System.out.println(element.text());
+					//text()는 순수 텍스트만 가져온다.
+					//System.out.println(element.text());
+					
 					//시작 태그 안의 href 라는 속성의 값을 가져오기
-					System.out.println(element.attr("href"));
+					//System.out.println(element.attr("href"));
 				}
 				
 				
